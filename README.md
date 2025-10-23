@@ -18,6 +18,7 @@ chmod +x /home/pi/button_servo.py
 sudo nano /etc/systemd/system/button_servo.service
 
 (configuration)
+```
 [Unit]
 Description=Button Servo Controller
 After=multi-user.target
@@ -29,9 +30,12 @@ User=pi
 
 [Install]
 WantedBy=multi-user.target
+```
 
 (enable and start)
+```
 sudo chmod 644 /etc/systemd/system/button_servo.service
 sudo systemctl daemon-reload
 sudo systemctl enable button_servo.service
+```
 sudo systemctl start button_servo.service
