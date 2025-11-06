@@ -1,0 +1,12 @@
+[Unit]
+Description=Run Button Script on Boot
+After=multi-user.target
+
+[Service]
+Type=idle
+User=pi
+ExecStart=/usr/bin/python3 /home/pi/button.py
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
