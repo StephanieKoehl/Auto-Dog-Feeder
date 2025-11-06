@@ -5,7 +5,7 @@ After=multi-user.target
 [Service]
 Type=idle
 User=pi
-ExecStart=/usr/bin/python3 /home/pi/button.py
+ExecStart=/home/renesh/Documents/button-motor.py
 Restart=always
 
 [Install]
