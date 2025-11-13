@@ -1,0 +1,21 @@
+wget https://storage.googleapis.com/download.tensorflow.org/example_images/320px-Felis_catus-cat_on_snow.jpg -O test.jpg
+
+import cv2
+import numpy as np
+import tensorflow as tf
+
+# Load image with OpenCV
+image = cv2.imread('test.jpg')
+image_resized = cv2.resize(image, (224, 224))
+
+# Prepare image for MobileNet: expand dimensions and normalize to [0,1]
+input_image = np.expand_dims(image_resized, axis=0) / 255.0
+
+# Load pre-trained MobileNet model from TF Hub
+model = tf.keras.applications.MobileNetV2(weights='imagenet')
+
+# Predict
+predictions = model.predict(input_image)
+decoded = tf.keras.applications.mobilenet_v2.decode_predictions(predictions, top=1)[0][0]
+
+print(f"Prediction: {decoded[1]} ({decoded[2]*100:.2f}%)")
