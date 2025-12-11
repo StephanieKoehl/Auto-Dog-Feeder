@@ -1,0 +1,55 @@
+Open the config.txt file.
+
+sudo nano /boot/firmware/config.txt
+
+../../../_images/start07.png
+Disable the automatic camera detection function.
+
+camera_auto_detect=0
+
+../../../_images/start08.png
+Add the following instruction at the very bottom.
+
+If you are not a Raspberry PI 5, add the following command.
+
+dtoverlay=ov5647
+
+../../../_images/start09.png
+If you are a Raspberry PI 5, add the following command.
+
+dtoverlay=ov5647,cam0
+
+../../../_images/start34.png
+Note:
+
+If your camera is imx219, please change ov5647 to imx219.
+
+If you actually connect the camera to cam1 instead of cam0, change cam0 to cam1.
+
+Save the file and exit.
+
+Reboot your raspberry pi.
+
+sudo reboot
+
+Before testing the camera, run the following command to see if the camera can be detected.
+
+ls /dev/video*
+
+../../../_images/start11.png
+/dev/video0 indicates the camera is connected. If you do not find this device, please check the camera wiring. You may reconnect it and try again.
+
+If the camera cannot be detected with the above two commands, please check the camera wiring. You may try reconnecting it to ensure good contact.
+
+Always ensure that your Raspberry Pi is not powered before operating the camera wiring to avoid burning them.
+
+rpicam-hello
+
+You should see a camera preview window for about five seconds. If you do not, please refer to the Raspberry Pi camera documentation.
+
+You can also enter the following command to capture an image with a resolution of 800 by 600. The image is saved in the current directory path by default.
+
+rpicam-jpeg -o test.jpg -t 2000 --width 800 --height 600
+
+
+
