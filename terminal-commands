@@ -1,1 +1,77 @@
 https://codeshare.io/GAOQLe
+
+
+✅ Step 1 — Install Python 3.10 on Mac
+
+Option A — Homebrew (recommended)
+
+If Homebrew is installed:
+
+brew install python@3.10
+
+
+This will install Python 3.10 and a python3.10 binary.
+
+Check it:
+
+python3.10 --version
+# should print something like Python 3.10.13
+
+
+Option B — Download installer from python.org
+
+Go to: https://www.python.org/downloads/release/python-31013/
+
+Download the macOS installer (x86_64 or universal2)
+
+Install it normally
+
+Open terminal and verify:
+
+python3.10 --version
+
+✅ Step 2 — Create a Python 3.10 virtual environment
+
+In terminal, in your project folder:
+
+python3.10 -m venv myenv
+
+
+myenv is the environment name
+
+This creates a clean isolated Python environment
+
+✅ Step 3 — Activate the virtual environment
+source myenv/bin/activate
+
+
+Your terminal should now show:
+
+(myenv) user@MacBook …
+
+✅ Step 4 — Upgrade pip (optional but recommended)
+pip install --upgrade pip
+
+✅ Step 5 — Install correct packages
+pip install numpy opencv-python
+pip install tensorflow==2.14.0
+pip install mediapipe==0.10.9
+
+
+This combination works with Python 3.10 and avoids all the protobuf / runtime_version errors.
+
+✅ Step 6 — Test MediaPipe
+python -c "import mediapipe as mp; print(dir(mp.solutions))"
+
+
+You should see hands, pose, holistic, etc. → no errors.
+
+✅ Step 7 — Run your hand gesture script
+python hand_gesture_live.py
+
+
+Live camera feed
+
+Hand landmarks
+
+Gesture labels
