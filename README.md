@@ -1,3 +1,7 @@
+open virtual env
+source myenv/bin/activate
+
+
 Components:
 - breadboard
 - raspi 5
